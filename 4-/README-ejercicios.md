@@ -87,5 +87,3 @@ LEFT JOIN pedido_detalle pd ON pd.pedido_id = pe.id;
 > Nota: en los ejercicios 4 y 6 se usan `WHERE c.id IS NULL` o comparaciones con `NULL` para contar/seleccionar datos no coincidentes; son análisis válidos para aprender sobre la semántica de cada JOIN.
 
 ---
-
-¿Quieres que genere un script `joins_practica.sql` con el setup y todas las consultas (comentadas) listo para ejecutar en Workbench? Puedo añadirlo al directorio `4-` para que tus alumnos lo ejecuten paso a paso.
