@@ -1,0 +1,108 @@
+1 B) El número total de productos con SKU nulo.
+2 A) Todos los productos (independientemente de activo)
+3 B) Inserta una fila nueva con id=7 y fallará si ya existe un producto con id=7. 
+4 A) El precio máximo de todos los productos (ignora NULL).
+5 A) Categorías con al menos 2 productos y el número de productos por categoría.
+6 B) Aumenta en 10% el precio del producto con id=2.
+7 B) Solo pedidos cuyo cliente existe en clientes.
+8 A) Elimina todas las filas y reinicia AUTO_INCREMENT (si aplica).
+9 B) B) El producto más caro.
+10  B) Devuelve cada categoría que aparece en productos, sin duplicados.
+11  B) Devuelve 5 filas comenzando desde la fila 11
+12 B) COUNT(*)cuenta filas, COUNT(columna)cuenta solo si la columna no es NULL.
+13 A) El promedio de precio por categoría.
+14 A) Agregue la columna descuentoy asigne 0.00 a filas existentes.
+15 B) Todas las categorías y los productos coincidentes (NULL si no hay producto)
+16 B) Que al borrar una fila padre, se borran las filas hijas relacionadas automáticamente.
+17 C) Productos cuyo nombre empieza por 'T'. 
+18 B) Lanzamiento error de duplicado por PK.
+19 D) B y C son correctas.
+20 B) Inicia una transacción y revierte los cambios realizados dentro de ella.
+21 A) SELECCIONE nombre, precio DE productos DONDE precio > 100;
+22 A) SELECT COUNT( ) FROM pedidos;
+23 A) SELECCIONAR c.nombre, MIN(p.creado_en) FROM clientes c UNIRSE a pedidos p ON p.cliente_id = c.id GROUP BY c.id; 
+24 A) SELECT * FROM productos WHERE sku IS NULL;
+25 A) SELECT SUM(cantidad * precio_unitario) AS total_ventas FROM pedido_detalle;
+26 
+	SELECT id, nombre, precio FROM productos;
+
+27 
+	INSERT INTO productos (id, nombre, precio, categoria_id, sku, stock, activo)
+VALUES (7, 'Altavoz', 39.90, 1, 'SKU-ALT-001', 20, TRUE);
+
+28
+	UPDATE productos
+SET precio = 34.90
+WHERE id = 1;
+
+
+29
+	DELETE FROM productos
+WHERE id = 7;
+
+30
+	SELECT p.id AS producto_id, 
+       p.nombre AS producto, 
+       c.nombre AS categoria
+FROM productos p
+INNER JOIN categorias c ON p.categoria_id = c.id;	
+
+31
+	
+	SELECT 
+    p.id AS pedido_id,
+    c.nombre AS cliente_nombre,
+    pr.nombre AS producto_nombre,
+    pd.cantidad
+FROM pedido_detalle pd
+INNER JOIN pedidos p ON pd.pedido_id = p.id
+INNER JOIN clientes c ON p.cliente_id = c.id
+INNER JOIN productos pr ON pd.producto_id = pr.id;
+
+32
+ 
+	SELECT COUNT(*) AS total_pedidos
+FROM pedidos;
+
+33 
+	SELECT 
+    pedido_id, 
+    SUM(cantidad * precio_unitario) AS importe_total
+FROM pedido_detalle
+GROUP BY pedido_id
+ORDER BY importe_total DESC;
+
+34
+	SELECT id, nombre, precio
+FROM productos
+ORDER BY precio ASC
+LIMIT 2;
+ 
+35 
+	ALTER TABLE productos
+ADD COLUMN descuento DECIMAL(5,2) DEFAULT 0.00;
+
+36 b) Una colección organizada de datos interrelacionados que representen información del mundo real
+37 a) Permitir que varios usuarios accedan y manipulen los datos de manera controlada.
+38  b) Administradores de bases de datos (DBA), diseñadores de bases de datos y programadores de aplicaciones.
+39 
+-información mas concisa y actualizaciones en un solo lugar sin necesidad de varios usuarios con duplicados inservibles
+-permiten seguridad de las personas que pueden manejar los datos, mediante permisos y autorizaciones
+-permite una comprensión clara de datos actualizados, teniendo una vista actualizada de los datos al momento de tomar decisiones
+
+40 a) Cuando el volumen de datos es bajo y las aplicaciones son simples.
+41 el diseño es la información que se recoge en la base de datos, en la instancia es el lugar donde se almacenan los datos 
+
+42 b) Lograr independencia física y lógica de los datos.
+43 c) Nivel externo
+44 a) DDL, DML y DCL
+45 es el método en donde se cambian datos sin afectar las aplicaciones ni a las vistas de usuarios que acceden a los datos 
+
+
+
+
+
+
+
+
+
